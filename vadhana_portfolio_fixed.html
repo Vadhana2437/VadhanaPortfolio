@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b14" />
+  <meta name="description" content="Vadhana A S — AI and Data Science portfolio featuring projects in GenAI, RAG, data science, and intelligent learning systems." />
+  <title>Vadhana A S | AI & Data Science Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#080b14;--panel:#101625;--panel2:#131b2d;--text:#f3f6ff;--muted:#a3adc2;--line:rgba(255,255,255,.1);--cyan:#67e8f9;--violet:#a78bfa;--green:#86efac;--radius:22px;--max:1380px}
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{font-family:"DM Sans",sans-serif;background:radial-gradient(ellipse at 15% 0%,rgba(103,232,249,.09),transparent 32%),radial-gradient(ellipse at 85% 15%,rgba(167,139,250,.11),transparent 28%),var(--bg);color:var(--text);line-height:1.65}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .container{width:min(var(--max),calc(100% - 40px));margin:auto}
+    .nav-wrap{position:sticky;top:0;z-index:20;background:rgba(8,11,20,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font:700 1.05rem "Space Grotesk",sans-serif;letter-spacing:-.04em}.brand span{color:var(--cyan)}
+    .nav-links{display:flex;align-items:center;gap:25px;color:var(--muted);font-size:.9rem}
+    .nav-links a:hover,.nav-links a.active{color:var(--cyan)}
+    .menu-btn{display:none;background:transparent;border:1px solid var(--line);border-radius:10px;color:var(--text);padding:8px 11px;cursor:pointer}
+    .hero{min-height:calc(92vh - 72px);display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:44px;padding-top:68px;padding-bottom:90px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--cyan);font-size:.8rem;text-transform:uppercase;letter-spacing:.16em;font-weight:700;margin-bottom:20px}
+    .dot{height:8px;width:8px;background:var(--green);border-radius:50%;box-shadow:0 0 16px var(--green)}
+    h1,h2,h3{font-family:"Space Grotesk",sans-serif;line-height:1.12;letter-spacing:-.04em}
+    h1{font-size:clamp(2.7rem,5.2vw,4.5rem);max-width:750px}
+    .gradient{background:linear-gradient(100deg,var(--cyan),#a5b4fc 52%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{font-size:1.08rem;color:var(--muted);max-width:620px;margin:24px 0 30px}
+    .actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-flex;justify-content:center;align-items:center;gap:9px;padding:12px 18px;border-radius:12px;font-weight:700;font-size:.93rem;border:1px solid var(--line);transition:transform .2s,border-color .2s,background .2s}
+    .btn:hover{transform:translateY(-3px);border-color:rgba(103,232,249,.55)}
+    .btn-primary{background:linear-gradient(100deg,#67e8f9,#a5b4fc);color:#07101a;border:0}
+    .hero-card{position:relative;border:1px solid rgba(167,139,250,.24);border-radius:30px;padding:30px;background:linear-gradient(145deg,rgba(19,27,45,.96),rgba(10,14,26,.9));box-shadow:0 24px 90px rgba(0,0,0,.28);overflow:hidden}
+    .hero-card:before{content:"";position:absolute;width:230px;height:230px;right:-80px;top:-90px;border-radius:50%;background:rgba(103,232,249,.12);filter:blur(5px)}
+    .avatar{height:92px;width:92px;display:grid;place-items:center;border-radius:25px;background:linear-gradient(140deg,rgba(103,232,249,.22),rgba(167,139,250,.3));border:1px solid rgba(255,255,255,.14);font:700 2rem "Space Grotesk",sans-serif;color:var(--cyan);margin-bottom:22px;position:relative}
+    .hero-card h3{font-size:1.45rem;position:relative}.hero-card>p{color:var(--muted);margin:10px 0 24px;font-size:.95rem}
+    .mini-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .stat{padding:15px;border-radius:15px;background:rgba(255,255,255,.035);border:1px solid var(--line)}
+    .stat strong{display:block;font:700 1.55rem "Space Grotesk",sans-serif;color:var(--cyan)}.stat span{font-size:.78rem;color:var(--muted)}
+    section{padding:76px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:30px}
+    .kicker{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:var(--cyan);font-weight:700;margin-bottom:9px}
+    h2{font-size:clamp(2rem,4vw,3rem)}.section-head p{max-width:480px;color:var(--muted)}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .panel{background:linear-gradient(145deg,rgba(19,27,45,.88),rgba(13,18,31,.88));border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+    .panel p{color:var(--muted)}.panel h3{font-size:1.2rem;margin-bottom:12px}
+    .pill-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+    .pill{border:1px solid rgba(103,232,249,.2);background:rgba(103,232,249,.06);color:#c9f8ff;border-radius:999px;padding:7px 11px;font-size:.79rem}
+    .project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+    .project{display:flex;flex-direction:column;min-height:300px;background:linear-gradient(155deg,rgba(19,27,45,.95),rgba(11,15,27,.94));border:1px solid var(--line);border-radius:20px;padding:22px;transition:transform .25s,border-color .25s}
+    .project:hover{transform:translateY(-5px);border-color:rgba(103,232,249,.4)}
+    .project-top{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:18px}
+    .project-icon{height:45px;width:45px;display:grid;place-items:center;border-radius:14px;background:rgba(167,139,250,.13);color:var(--cyan);font-size:1.35rem}
+    .project-number{font:600 .8rem "Space Grotesk",sans-serif;color:#78849d}
+    .project h3{font-size:1.2rem;margin-bottom:10px}.project p{color:var(--muted);font-size:.91rem}
+    .project .pill-row{margin-top:17px;margin-bottom:20px}.project .pill{font-size:.72rem;padding:5px 8px}
+    .project-footer{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--muted);font-size:.78rem;border-top:1px solid var(--line);padding-top:14px}
+    .duration{color:#c4b5fd}.self-label{color:var(--green);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700}
+    .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
+    .skill-card{padding:20px;border:1px solid var(--line);border-radius:17px;background:rgba(16,22,37,.72)}
+    .skill-card h3{font-size:1rem;margin-bottom:12px}.skill-card p{color:var(--muted);font-size:.87rem}
+    .timeline{border-left:1px solid rgba(103,232,249,.35);margin-left:8px;padding-left:26px;display:grid;gap:22px}
+    .timeline-item{position:relative}.timeline-item:before{content:"";position:absolute;left:-32px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 15px rgba(103,232,249,.5)}
+    .timeline-item h3{font-size:1.05rem}.timeline-item p{color:var(--muted);font-size:.9rem;margin-top:5px}
+    .contact-box{display:flex;justify-content:space-between;align-items:center;gap:30px;padding:34px;border-radius:25px;border:1px solid rgba(103,232,249,.22);background:linear-gradient(120deg,rgba(103,232,249,.08),rgba(167,139,250,.09))}
+    .contact-box p{color:var(--muted);margin-top:10px}.contact-links{display:flex;flex-wrap:wrap;gap:10px}
+    footer{padding:25px 0;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+    .footer-inner{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+
+    .project-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;flex-wrap:wrap}
+    .project-link{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border-radius:10px;background:rgba(103,232,249,.1);border:1px solid rgba(103,232,249,.25);color:#c9f8ff;font-weight:700;font-size:.8rem;transition:background .2s,transform .2s}
+    .project-link:hover{background:rgba(103,232,249,.18);transform:translateY(-2px)}
+    .demo-note{font-size:.72rem;color:#a3adc2}
+
+
+    :root{--bg:#090e1c;--panel:#111a2e;--cyan:#67e8f9;--violet:#c084fc;--pink:#f0abfc}
+    body{background:linear-gradient(120deg,#090e1c,#11132b,#101f2c,#1a1230,#090e1c);background-size:350% 350%;animation:ambientShift 22s ease infinite}
+    @keyframes ambientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+    :root{--bg:#fff5fb;--panel:#ffffff;--panel2:#fff0f8;--text:#28213a;--muted:#6f657d;--line:rgba(95,54,105,.14);--cyan:#ec4899;--violet:#8b5cf6;--green:#f472b6}
+    body{color:var(--text);background:linear-gradient(125deg,#fff1f7,#f5efff,#eafaff,#fff4e8,#ffeaf4);background-size:300% 300%;animation:paletteFlow 2s ease-in-out infinite alternate}
+    @keyframes paletteFlow{0%{background-position:0% 45%;filter:hue-rotate(0deg)}50%{background-position:50% 55%;filter:hue-rotate(8deg)}100%{background-position:100% 45%;filter:hue-rotate(-7deg)}}
+    .nav-wrap{background:rgba(255,250,254,.78);border-bottom:1px solid rgba(95,54,105,.12)}
+    .brand{color:#382342}.brand-mark{display:flex;align-items:center;gap:9px}.brand-symbol{width:33px;height:33px;display:grid;place-items:center;border-radius:11px;background:linear-gradient(135deg,#ec4899,#a78bfa);color:#fff;font-size:1rem;box-shadow:0 6px 18px rgba(236,72,153,.22)}.brand-word{font:700 .94rem "Space Grotesk",sans-serif;letter-spacing:.04em}.brand-dot{color:#ec4899}
+    .hero-outline{color:#a855f7;-webkit-text-stroke:1px rgba(168,85,247,.25)}
+    .hero-card,.panel,.project,.skill-card{background:rgba(255,255,255,.68);border-color:rgba(130,80,145,.16);box-shadow:0 15px 55px rgba(125,65,125,.07);backdrop-filter:blur(14px)}
+    .hero-card:before{background:rgba(244,114,182,.22)}
+    .avatar{background:linear-gradient(140deg,#fbcfe8,#ddd6fe);color:#a21caf;border-color:rgba(255,255,255,.85)}
+    .stat{background:rgba(255,255,255,.6);border-color:rgba(130,80,145,.13)}
+    .stat strong{color:#c02680}
+    .eyebrow,.kicker{color:#c02680}
+    .dot{background:#fb7185;box-shadow:0 0 16px #f9a8d4}
+    .gradient{background:linear-gradient(100deg,#ec4899,#a855f7 55%,#0ea5e9);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .btn{border-color:rgba(130,80,145,.2);color:#49334f;background:rgba(255,255,255,.52)}
+    .btn-primary{background:linear-gradient(100deg,#f9a8d4,#c4b5fd,#bae6fd);color:#35213b;border:0}
+    .pill{border-color:rgba(219,39,119,.18);background:rgba(244,114,182,.09);color:#8b2863}
+    .project-icon{background:linear-gradient(135deg,#fce7f3,#ede9fe);color:#a21caf}
+    .project-number{color:#9b8ba5}
+    .duration{color:#8b5cf6}.self-label{color:#0f9b8e}
+    .project-link{background:linear-gradient(100deg,#fbcfe8,#ddd6fe);color:#51264f;border:0}
+    .project-link:hover{box-shadow:0 0 22px rgba(236,72,153,.2)}
+    .contact-box{background:linear-gradient(120deg,rgba(251,207,232,.7),rgba(221,214,254,.62),rgba(186,230,253,.5));border-color:rgba(219,39,119,.18)}
+    footer{border-color:rgba(95,54,105,.12);color:#8c7c95}
+    .modal-card{background:linear-gradient(145deg,#fff,#fff2fa);border-color:rgba(219,39,119,.22)}
+    .demo-area,.demo-stat{background:rgba(255,255,255,.8);border-color:rgba(130,80,145,.16)}
+    .demo-input,.demo-select,.demo-textarea{background:#fff;color:#35213b;border-color:rgba(130,80,145,.2)}
+    .demo-result{background:rgba(244,114,182,.09);border-color:rgba(219,39,119,.18);color:#6b2458}
+    .demo-btn{background:linear-gradient(100deg,#f9a8d4,#c4b5fd);color:#35213b}
+    .bubbles .bubble{background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.98),rgba(249,168,212,.65) 35%,rgba(196,181,253,.32) 72%,transparent);border-color:rgba(236,72,153,.24)}
+    .project-modal{background:rgba(65,35,70,.35)}
+    .modal-kicker{color:#c02680}
+    .modal-desc,.demo-hint{color:#75657e}
+    @media(prefers-reduced-motion:reduce){body{animation:none}}
+
+    .project-link{font-family:inherit;cursor:pointer}
+    .project-actions{justify-content:flex-start}
+    .project-action{border:1px solid rgba(103,232,249,.38);box-shadow:0 0 0 rgba(103,232,249,0);transition:transform .2s,box-shadow .2s,background .2s}
+    .project-action:hover{box-shadow:0 0 22px rgba(103,232,249,.18)}
+    .bubbles{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden}
+    .bubble{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.85),rgba(103,232,249,.25) 35%,rgba(192,132,252,.12) 72%,transparent);border:1px solid rgba(255,255,255,.22);animation:bubbleRise 1.4s ease-out forwards}
+    @keyframes bubbleRise{0%{opacity:.8;transform:translateY(0) scale(.5)}100%{opacity:0;transform:translateY(-100px) scale(1.5)}}
+    .project-modal{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(4,7,16,.76);backdrop-filter:blur(12px)}
+    .project-modal.open{display:flex}
+    .modal-card{width:min(760px,100%);max-height:min(88vh,900px);overflow:auto;border:1px solid rgba(103,232,249,.28);border-radius:24px;background:linear-gradient(145deg,#141d32,#0b1120);box-shadow:0 25px 100px rgba(0,0,0,.45);padding:28px;position:relative}
+    .modal-close{position:absolute;right:18px;top:16px;width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--text);cursor:pointer;font-size:1.2rem}
+    .modal-kicker{color:var(--cyan);font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+    .modal-card h2{font-size:clamp(1.7rem,4vw,2.5rem);max-width:88%;margin-bottom:12px}
+    .modal-desc{color:var(--muted);margin-bottom:20px}
+    .demo-area{border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:17px;padding:20px;margin-top:16px}
+    .demo-area h3{font-size:1.05rem;margin-bottom:12px}
+    .demo-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .demo-input,.demo-select,.demo-textarea{width:100%;background:#0a1020;color:var(--text);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:11px 12px;font:inherit;outline:none}
+    .demo-input:focus,.demo-select:focus,.demo-textarea:focus{border-color:var(--cyan)}
+    .demo-textarea{min-height:90px;resize:vertical}
+    .demo-btn{border:0;border-radius:10px;background:linear-gradient(100deg,#67e8f9,#c084fc);color:#07101a;padding:10px 14px;font-weight:700;cursor:pointer}
+    .demo-result{margin-top:13px;border:1px solid rgba(103,232,249,.18);background:rgba(103,232,249,.06);border-radius:12px;padding:13px;color:#d9faff;min-height:45px;white-space:pre-wrap}
+    .demo-hint{font-size:.78rem;color:var(--muted);margin-top:10px}
+    .demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .demo-stat{padding:13px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.03)}
+    .demo-stat strong{display:block;color:var(--cyan);font-size:1.2rem}
+    @media(max-width:560px){.modal-card{padding:22px 16px}.demo-grid{grid-template-columns:1fr}}
+
+    @media(max-width:900px){.hero{grid-template-columns:1fr .8fr;gap:28px}.project-grid{grid-template-columns:repeat(2,1fr)}.skills-grid{grid-template-columns:repeat(2,1fr)}.nav-links{gap:15px}}
+    @media(max-width:680px){.container{width:min(100% - 28px,var(--max))}nav{min-height:64px}.menu-btn{display:block}.nav-links{display:none;position:absolute;top:64px;left:0;right:0;padding:18px 22px 22px;background:rgba(8,11,20,.98);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start}.nav-links.open{display:flex}.hero{grid-template-columns:1fr;min-height:auto;padding-top:65px;padding-bottom:45px}.hero-card{max-width:440px}.section-head{align-items:flex-start;flex-direction:column}.about-grid,.project-grid,.skills-grid{grid-template-columns:1fr}.project{min-height:unset}.contact-box{align-items:flex-start;flex-direction:column;padding:25px}section{padding:55px 0}h1{font-size:clamp(2.65rem,13vw,4rem)}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*,*:before,*:after{animation:none!important;transition:none!important}}
+  
+    html,body,body *{font-family:"Times New Roman",Times,serif!important}
+    body{background:linear-gradient(120deg,#ff4fa3,#ffb703,#7c3aed,#00c2ff,#00d084,#ff5c35,#f72585);background-size:700% 700%;animation:sevenColorShift 7s linear infinite alternate}
+    @keyframes sevenColorShift{
+      0%{background-position:0% 50%;filter:hue-rotate(0deg)}
+      16%{background-position:16% 50%;filter:hue-rotate(8deg)}
+      32%{background-position:32% 50%;filter:hue-rotate(-8deg)}
+      48%{background-position:48% 50%;filter:hue-rotate(10deg)}
+      64%{background-position:64% 50%;filter:hue-rotate(-10deg)}
+      80%{background-position:80% 50%;filter:hue-rotate(8deg)}
+      100%{background-position:100% 50%;filter:hue-rotate(0deg)}
+    }
+    .nav-wrap{background:rgba(255,255,255,.75)}
+    .hero-card,.panel,.project,.skill-card{background:rgba(255,255,255,.83);border-color:rgba(255,255,255,.72);box-shadow:0 15px 45px rgba(76,29,149,.12)}
+    .hero-card h3,.panel h3,.project h3,.skill-card h3,.timeline-item h3{color:#2c1645}
+    .stat{background:rgba(255,255,255,.8)}
+    .stat strong{color:#d41487}
+    .project-icon{background:linear-gradient(135deg,#ffb3dc,#b7e8ff);color:#7713a8}
+    .pill{background:rgba(255,255,255,.8);color:#711b67;border-color:rgba(255,255,255,.9)}
+    .btn-primary,.demo-btn{background:linear-gradient(100deg,#ff4fa3,#ffb703,#00c2ff);background-size:250% 250%;color:#241033}
+    .contact-box{background:rgba(255,255,255,.78)}
+    .project-link{background:linear-gradient(100deg,#ffb3dc,#b7e8ff);color:#38164a}
+    @media(prefers-reduced-motion:reduce){body{animation:none}}
+
+  
+/* FINAL ACCESSIBILITY + EXACT SEVEN COLOURS */
+html,body,body *{font-family:"Times New Roman",Times,serif!important}
+body{background:#bceeff!important;background-image:none!important;animation:none!important;transition:background-color .55s ease!important;color:#21162e!important}
+body[data-theme="black"]{color:#f8f7ff!important}
+body[data-theme="black"] .hero h1,body[data-theme="black"] .hero p,body[data-theme="black"] .hero strong,body[data-theme="black"] .section-head h2,body[data-theme="black"] .section-head p{color:#fff!important}
+.nav-wrap{background:rgba(255,255,255,.92)!important}
+.panel,.project,.skill-card,.hero-card,.contact-box{background:rgba(255,255,255,.94)!important;color:#21162e!important}
+.project p,.panel p,.skill-card p,.hero-card p,.timeline-item p{color:#51465f!important}
+.project-modal{background:rgba(19,16,34,.65)!important;backdrop-filter:blur(8px)!important}
+.modal-card{background:#fffafc!important;color:#24152f!important;border:2px solid #e6b9e0!important;box-shadow:0 30px 100px rgba(0,0,0,.28)!important}
+.modal-card h2,.modal-card h3,.modal-card p,.modal-card label{color:#24152f!important}
+.modal-card .modal-desc,.modal-card .demo-hint{color:#55445e!important}
+.modal-card .modal-kicker{color:#ad146a!important}
+.modal-close{background:#fbe4f2!important;color:#32183a!important;border:1px solid #e7c3df!important}
+.demo-area{background:#fff!important;border:1px solid #dcc5e3!important}
+.demo-input,.demo-select,.demo-textarea{background:#fff!important;color:#24152f!important;border:2px solid #bd9acb!important}
+.demo-input::placeholder,.demo-textarea::placeholder{color:#73657c!important;opacity:1!important}
+.demo-result{background:#eaf8ff!important;color:#1c2d40!important;border:1px solid #a5cce3!important;font-weight:600}
+.demo-btn{color:#21162e!important}
+.project-link{color:#281433!important}
+@media(prefers-reduced-motion:reduce){body{transition:none!important}}
+
+</style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand brand-mark" href="#home" aria-label="Go to home"><span class="brand-symbol">✦</span><span class="brand-word">VA<span class="brand-dot">.</span></span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#education">Education</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <header class="container hero" id="home">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> AI & Data Science Portfolio</div>
+        <h1>Ideas into<br><span class="gradient">intelligence.</span><br><span class="hero-outline">Made useful.</span></h1>
+        <p>AI & Data Science student crafting practical tools from data, language, and ideas. Explore selected work in analytics, GenAI, and learning technology.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">Explore my projects ↘</a>
+          <a class="btn" href="#contact">Get in touch ↗</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="avatar">VA</div>
+        <h3>AI / DS Creator</h3>
+        <p>Artificial Intelligence<br>Data Science · Generative AI</p>
+        <div class="mini-stats">
+          <div class="stat"><strong>07</strong><span>Selected builds</span></div>
+          <div class="stat"><strong>AI × Data</strong><span>My playground</span></div>
+        </div>
+      </aside>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="kicker">A little about me</div><h2>Curiosity into <span class="gradient">creation.</span></h2></div><p>I enjoy exploring practical ways to use AI and data to make information easier to understand and everyday workflows more useful.</p></div>
+        <div class="about-grid">
+          <article class="panel reveal"><h3>My focus</h3><p>My project interests include data analysis, Generative AI, retrieval-augmented generation (RAG), document question answering, voice interfaces, and personalized learning tools.</p><div class="pill-row"><span class="pill">AI / ML</span><span class="pill">Generative AI</span><span class="pill">Data Science</span><span class="pill">RAG Systems</span></div></article>
+          <article class="panel reveal"><h3>How I approach projects</h3><p>I like turning an idea into a clear, usable application—starting with the problem, exploring suitable technologies, and iterating toward a practical solution.</p><div class="pill-row"><span class="pill">Problem solving</span><span class="pill">Rapid prototyping</span><span class="pill">Continuous learning</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="kicker">Selected work</div><h2>Projects I’ve <span class="gradient">worked on.</span></h2></div><p>A collection of project concepts and builds across data science, AI assistants, feedback analysis, and learning experiences.</p></div>
+        <div class="project-grid">
+          <article class="project reveal"><div class="project-top"><div class="project-icon">▥</div><span class="project-number">01 / 07</span></div><h3>DSDA</h3><p>Data Science & Statistical Analysis App designed to explore datasets and make statistical insights easier to interpret.</p><div class="pill-row"><span class="pill">Data Science</span><span class="pill">Statistics</span><span class="pill">Analytics</span></div><div class="project-footer"><span class="duration">March 2026 · 1 month</span><span>Project</span></div><div class="project-actions"><button class="project-link project-action" type="button" data-project-open>View Project ↗</button></div></article>
+          <article class="project reveal"><div class="project-top"><div class="project-icon">♫</div><span class="project-number">02 / 07</span></div><h3>GenAI Voice Assistant</h3><p>A voice-first assistant concept that combines speech interaction with Generative AI to support natural, conversational tasks.</p><div class="pill-row"><span class="pill">GenAI</span><span class="pill">Voice UI</span><span class="pill">Speech</span></div><div class="project-footer"><span class="duration">April 2026 · 1 month</span><span>Project</span></div><div class="project-actions"><button class="project-link project-action" type="button" data-project-open>View Project ↗</button></div></article>
+          <article class="project reveal"><div class="project-top"><div class="project-icon">▤</div><span class="project-number">03 / 07</span></div><h3>Smart Survey AI</h3><p>An AI-powered platform concept for generating structured surveys to help streamline questionnaire creation.</p><div class="pill-row"><span class="pill">Artificial Intelligence</span><span class="pill">Survey Generation</span></div><div class="project-footer"><span class="duration">June 2026 · 3 weeks</span><span>Project</span></div><div class="project-actions"><button class="project-link project-action" type="button" data-project-open>View Project ↗</button></div></article>
+          <article class="project reveal"><div class="project-top"><div class="project-icon">◎</div><span class="project-number">04 / 07</span></div><h3>Campus Feedback Bot</h3><p>A RAG-based student feedback analysis system concept to help organize feedback and make relevant information easier to retrieve.</p><div class="pill-row"><span class="pill">RAG</span><span class="pill">NLP</span><span class="pill">Feedback Analysis</span></div><div class="project-footer"><span class="duration">July 2026 · 3 weeks</span><span>Project</span></div><div class="project-actions"><button class="project-link project-action" type="button" data-project-open>View Project ↗</button></div></article>
+          <article class="project reveal"><div class="project-top"><div class="project-icon">▷</div><span class="project-number">05 / 07</span></div><h3>AI-Powered Abstract Concept to Visual Learning Video</h3><p>A learning experience concept that turns abstract topics into visual video-based explanations to support understanding.</p><div class="pill-row"><span class="pill">AI</span><span class="pill">Visual Learning</span><span class="pill">Educational Tech</span></div><div class="project-footer"><span class="duration">Aug–Sep 2026 · 2 months</span><span>Project</span></div><div class="project-actions"><button class="project-link project-action" type="button" data-project-open>View Project ↗</button></div></article>
+          <article class="project reveal"><div class="project-top"><div class="project-icon">▧</div><span class="project-number">06 / 07</span></div><div class="self-label">Self-initiated</div><h3>DocuMind AI</h3><p>An intelligent document question-answering system concept for finding answers from document content more efficiently.</p><div class="pill-row"><span class="pill">Document AI</span><span class="pill">Question Answering</span><span class="pill">LLM</span></div><div class="project-footer"><span class="duration">August 2026 · 2 months</span><span>Personal project</span></div><div class="project-actions"><button class="project-link project-action" type="button" data-project-open>View Project ↗</button></div></article>
+          <article class="project reveal"><div class="project-top"><div class="project-icon">✧</div><span class="project-number">07 / 07</span></div><div class="self-label">Self-initiated</div><h3>Study Twin AI</h3><p>A personal AI learning companion concept intended to support topic exploration, study guidance, and personalized learning.</p><div class="pill-row"><span class="pill">AI Learning</span><span class="pill">Personalization</span><span class="pill">EdTech</span></div><div class="project-footer"><span class="duration">July 2026 · 1 month</span><span>Personal project</span></div><div class="project-actions"><button class="project-link project-action" type="button" data-project-open>View Project ↗</button></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="kicker">Tools & interests</div><h2>Skills I’m <span class="gradient">building.</span></h2></div><p>Areas aligned with my project work and continued learning.</p></div>
+        <div class="skills-grid">
+          <article class="skill-card reveal"><h3>AI & Machine Learning</h3><p>AI/ML fundamentals, Generative AI concepts, intelligent applications.</p></article>
+          <article class="skill-card reveal"><h3>Data & Statistics</h3><p>Data analysis, statistical reasoning, visualization, and interpretation.</p></article>
+          <article class="skill-card reveal"><h3>Language & Retrieval</h3><p>RAG concepts, NLP, document-based question answering.</p></article>
+          <article class="skill-card reveal"><h3>Product Building</h3><p>Application prototyping, user-focused workflows, iterative development.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-head reveal"><div><div class="kicker">Education</div><h2>My learning <span class="gradient">journey.</span></h2></div></div>
+        <div class="panel reveal">
+          <div class="timeline">
+            <div class="timeline-item"><h3>National Engineering College</h3><p>Department: Artificial Intelligence & Data Science (AI & DS)</p></div>
+            <div class="timeline-item"><h3>Core Subjects & Technical Learning</h3><p>Artificial Intelligence, Data Science, Machine Learning, Deep Learning, Statistics, Probability, Python, C Programming, Java, Data Structures & Algorithms, Object-Oriented Programming, Database Management Systems, SQL, Operating Systems, Computer Networks, Software Engineering, Web Development, Computer Vision, Natural Language Processing, Generative AI, Retrieval-Augmented Generation (RAG), Big Data, Hadoop, Apache Spark, Cloud & IoT fundamentals, CUDA / GPU Computing, and Data Visualization.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box reveal">
+          <div><div class="kicker">Let’s connect</div><h2>Have an idea? <span class="gradient">Let’s talk.</span></h2><p>Open to connecting about AI projects, learning opportunities, and collaboration.</p></div>
+          <div class="contact-links">
+            <a class="btn btn-primary" href="mailto:24243030@nec.edu.in">✉ 24243030@nec.edu.in</a>
+            <a class="btn" href="https://www.linkedin.com/in/vadhana-a-s-9b70a532a/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a class="btn" href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="bubbles" id="bubbles" aria-hidden="true"></div>
+  <div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button class="modal-close" id="modalClose" aria-label="Close project demo">×</button>
+      <div class="modal-kicker">Interactive project preview</div>
+      <h2 id="modalTitle">Project</h2>
+      <p class="modal-desc" id="modalDescription"></p>
+      <div id="modalDemo"></div>
+      <p class="demo-hint">This is an in-browser prototype preview. The full original AI/backend application requires its own deployed app or configured services.</p>
+    </div>
+  </div>
+
+  <footer><div class="container footer-inner"><span>© <span id="year"></span> Vadhana A S</span></div></footer>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.textContent = open ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.textContent = '☰';
+    }));
+
+
+    const projectInfo = [
+      {title:'DSDA — Data Science & Statistical Analysis App', desc:'Explore a small sample dataset, calculate summary statistics, and preview an analytical insight.', demo:'dsda'},
+      {title:'GenAI Voice Assistant', desc:'Try a browser-based assistant interaction. This prototype responds locally; a full GenAI assistant needs a connected model/API.', demo:'voice'},
+      {title:'Smart Survey AI', desc:'Enter a topic and generate a sample survey structure in the browser.', demo:'survey'},
+      {title:'Campus Feedback Bot', desc:'Try a feedback classification and suggested routing demo inspired by a campus feedback workflow.', demo:'feedback'},
+      {title:'AI-Powered Visual Learning Video', desc:'Turn a concept into a storyboard outline for a short visual-learning video.', demo:'visual'},
+      {title:'DocuMind AI', desc:'Paste sample notes and ask a question to preview simple keyword-based document Q&A.', demo:'docu'},
+      {title:'Study Twin AI', desc:'Create a mini study plan from a topic and available study time.', demo:'study'}
+    ];
+    const modal = document.getElementById('projectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalDemo = document.getElementById('modalDemo');
+    const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    function renderDemo(type){
+      const templates = {
+        dsda: `<div class="demo-area"><h3>Sample dataset analyzer</h3><p class="modal-desc">Sample scores: 72, 84, 91, 68, 87, 78</p><button class="demo-btn" data-action="analyze">Analyze sample data</button><div class="demo-result" id="demoResult">Click analyze to calculate summary statistics.</div></div>`,
+        voice: `<div class="demo-area"><h3>Assistant playground</h3><textarea class="demo-textarea" id="demoInput" placeholder="Ask something, e.g. Explain machine learning in simple terms"></textarea><div class="demo-row" style="margin-top:10px"><button class="demo-btn" data-action="assistant">Ask assistant</button><button class="btn" data-action="voice" type="button">Use browser voice input</button></div><div class="demo-result" id="demoResult">Your local demo response will appear here.</div></div>`,
+        survey: `<div class="demo-area"><h3>Survey builder</h3><input class="demo-input" id="demoInput" placeholder="Survey topic, e.g. Campus Wi-Fi experience"><div class="demo-row" style="margin-top:10px"><select class="demo-select" id="demoSelect"><option>Student experience</option><option>Product feedback</option><option>Event evaluation</option><option>Course feedback</option></select><button class="demo-btn" data-action="survey">Generate survey</button></div><div class="demo-result" id="demoResult">Your sample questions will appear here.</div></div>`,
+        feedback: `<div class="demo-area"><h3>Feedback triage</h3><textarea class="demo-textarea" id="demoInput" placeholder="Example: The computer lab Wi-Fi is not working"></textarea><div class="demo-row" style="margin-top:10px"><button class="demo-btn" data-action="feedback">Analyze feedback</button></div><div class="demo-result" id="demoResult">Add feedback and see a suggested category and team.</div></div>`,
+        visual: `<div class="demo-area"><h3>Visual lesson storyboard</h3><input class="demo-input" id="demoInput" placeholder="Concept, e.g. Photosynthesis"><div class="demo-row" style="margin-top:10px"><select class="demo-select" id="demoSelect"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select><button class="demo-btn" data-action="visual">Create storyboard</button></div><div class="demo-result" id="demoResult">A short scene-by-scene plan will appear here.</div></div>`,
+        docu: `<div class="demo-area"><h3>Document Q&A preview</h3><textarea class="demo-textarea" id="docText" placeholder="Paste a few notes or a short document here">Artificial intelligence enables computers to perform tasks that usually require human intelligence. Machine learning learns patterns from data. Retrieval augmented generation uses retrieved information to help a language model answer questions.</textarea><input class="demo-input" id="demoInput" style="margin-top:10px" placeholder="Ask a question about your notes"><div class="demo-row" style="margin-top:10px"><button class="demo-btn" data-action="docu">Find answer</button></div><div class="demo-result" id="demoResult">This simple prototype searches your pasted text for a relevant sentence.</div></div>`,
+        study: `<div class="demo-area"><h3>Personal study planner</h3><input class="demo-input" id="demoInput" placeholder="Topic to learn, e.g. Neural Networks"><div class="demo-row" style="margin-top:10px"><select class="demo-select" id="demoSelect"><option value="30">30 minutes</option><option value="60">1 hour</option><option value="90">90 minutes</option><option value="120">2 hours</option></select><button class="demo-btn" data-action="study">Build study plan</button></div><div class="demo-result" id="demoResult">Your personalized sample plan will appear here.</div></div>`
+      };
+      return templates[type] || '';
+    }
+    function openProject(index){
+      const item = projectInfo[index];
+      if(!item) return;
+      modalTitle.textContent = item.title;
+      modalDescription.textContent = item.desc;
+      modalDemo.innerHTML = renderDemo(item.demo);
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeProject(){
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('[data-project-open]').forEach((button,index) => button.addEventListener('click', () => openProject(index)));
+    document.getElementById('modalClose').addEventListener('click', closeProject);
+    modal.addEventListener('click', event => { if(event.target === modal) closeProject(); });
+    document.addEventListener('keydown', event => { if(event.key === 'Escape') closeProject(); });
+
+    modalDemo.addEventListener('click', event => {
+      const action = event.target.dataset.action;
+      if(!action) return;
+      const result = document.getElementById('demoResult');
+      const input = document.getElementById('demoInput');
+      const value = input ? input.value.trim() : '';
+      const select = document.getElementById('demoSelect');
+      if(action === 'analyze'){
+        const data=[72,84,91,68,87,78], mean=data.reduce((a,b)=>a+b,0)/data.length;
+        result.textContent=`Count: ${data.length}\nAverage: ${mean.toFixed(1)}\nHighest: ${Math.max(...data)}\nLowest: ${Math.min(...data)}\nInsight: Most sample scores fall in the 70–90 range.`;
+      } else if(action === 'assistant'){
+        if(!value){result.textContent='Please type a question first.';return;}
+        result.textContent=`Demo response:\n${value.toLowerCase().includes('machine learning')?'Machine learning is a way for computers to learn patterns from examples instead of being programmed with every rule.':'I can help break this topic into smaller steps. Start by defining the main idea, then review one example and try a short practice question.'}\n\nNote: This is a local sample response, not a live GenAI API call.`;
+      } else if(action === 'voice'){
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if(!SpeechRecognition){result.textContent='Voice input is not supported in this browser. Try Chrome, or type your question above.';return;}
+        const recognition = new SpeechRecognition(); recognition.lang='en-IN';
+        recognition.onresult = e => { document.getElementById('demoInput').value=e.results[0][0].transcript; result.textContent='Voice captured. Click “Ask assistant” to see a sample response.'; };
+        recognition.onerror = () => result.textContent='Microphone access was unavailable. You can type your question instead.';
+        recognition.start(); result.textContent='Listening… Please allow microphone access if prompted.';
+      } else if(action === 'survey'){
+        if(!value){result.textContent='Please enter a survey topic.';return;}
+        const kind=select.value;
+        result.textContent=`Survey topic: ${value}\nSurvey type: ${kind}\n\n1. How would you rate your overall experience?\n2. What worked well for you?\n3. What was the biggest challenge?\n4. How likely are you to recommend or use this again?\n5. What one improvement would you suggest?`;
+      } else if(action === 'feedback'){
+        if(!value){result.textContent='Please enter feedback first.';return;}
+        const text=value.toLowerCase();
+        const category=text.includes('wifi')||text.includes('internet')?'Wi-Fi / Network':text.includes('lab')||text.includes('computer')?'Laboratory':text.includes('canteen')||text.includes('food')?'Canteen':text.includes('faculty')||text.includes('teacher')?'Faculty':text.includes('hostel')?'Hostel':text.includes('bus')||text.includes('transport')?'Transport':'General campus feedback';
+        result.textContent=`Suggested category: ${category}\nSuggested next step: Send to the responsible campus team for review.\n\nThis is a keyword-based demo; it does not send real emails or store feedback.`;
+      } else if(action === 'visual'){
+        if(!value){result.textContent='Please enter a concept.';return;}
+        result.textContent=`Storyboard: ${value}\nLevel: ${select.value}\n\nScene 1 — Introduce the concept with a simple visual.\nScene 2 — Show the main components using labels and motion.\nScene 3 — Walk through a real-world example.\nScene 4 — Summarize the key idea with a short recap question.`;
+      } else if(action === 'docu'){
+        const doc=document.getElementById('docText').value.trim();
+        if(!doc||!value){result.textContent='Please add document notes and a question.';return;}
+        const sentences=doc.split(/[.!?]\s+/);
+        const terms=value.toLowerCase().split(/\W+/).filter(word=>word.length>3);
+        const ranked=sentences.map(sentence=>({sentence,score:terms.filter(term=>sentence.toLowerCase().includes(term)).length})).sort((a,b)=>b.score-a.score);
+        result.textContent=ranked[0]?.score?`Most relevant sentence:\n${ranked[0].sentence}`:'No close keyword match found. Try asking with words that appear in your notes.';
+      } else if(action === 'study'){
+        if(!value){result.textContent='Please enter a study topic.';return;}
+        const mins=Number(select.value);
+        const a=Math.round(mins*.2),b=Math.round(mins*.45),c=mins-a-b;
+        result.textContent=`Study plan: ${value}\n\n${a} min — Learn the core definitions.\n${b} min — Study examples and make notes.\n${c} min — Practise recall and answer 3 questions.\n\nTip: End by writing a 2–3 sentence summary from memory.`;
+      }
+    });
+
+    // Small glowing bubbles appear wherever the visitor clicks or taps.
+    const bubbleLayer = document.getElementById('bubbles');
+    document.addEventListener('pointerdown', event => {
+      if(event.target.closest('.project-modal')) return;
+      const bubble = document.createElement('span');
+      bubble.className = 'bubble';
+      const size = 16 + Math.random()*24;
+      bubble.style.width = `${size}px`; bubble.style.height = `${size}px`;
+      bubble.style.left = `${event.clientX-size/2}px`; bubble.style.top = `${event.clientY-size/2}px`;
+      bubbleLayer.appendChild(bubble);
+      setTimeout(() => bubble.remove(), 1500);
+    });
+
+    // Legacy project repository lookup disabled: each card opens its own interactive preview.
+    /*
+    // Link each project card to its matching public GitHub repository.
+    // If that repository exposes a homepage URL, use it as the runnable demo.
+    const projectCards = [...document.querySelectorAll('.project')];
+    const projectTerms = [
+      ['DSDA', ['dsda', 'data science', 'statistical analysis']],
+      ['GenAI Voice Assistant', ['voice assistant', 'genai voice', 'voice']],
+      ['Smart Survey AI', ['smart survey', 'survey ai', 'survey generation']],
+      ['Campus Feedback Bot', ['campus feedback', 'feedback bot', 'rag feedback']],
+      ['AI-Powered Abstract Concept to Visual Learning Video', ['visual learning', 'learning video', 'abstract concept']],
+      ['DocuMind AI', ['documind', 'document question answering', 'document qa']],
+      ['Study Twin AI', ['study twin', 'learning companion', 'study ai']]
+    ];
+    fetch('https://api.github.com/users/Vadhana2437/repos?per_page=100&sort=updated')
+      .then(response => {
+        if (!response.ok) throw new Error('GitHub repository list unavailable');
+        return response.json();
+      })
+      .then(repos => {
+        projectCards.forEach((card, index) => {
+          const [title, terms] = projectTerms[index] || ['', []];
+          const normalizedTerms = terms.map(term => term.toLowerCase());
+          const match = repos.find(repo => {
+            const text = `${repo.name} ${repo.description || ''}`.toLowerCase();
+            return normalizedTerms.some(term => text.includes(term));
+          });
+          const button = card.querySelector('.project-action');
+          if (!button) return;
+          if (match) {
+            button.href = match.homepage || match.html_url;
+            button.textContent = match.homepage ? 'View Project ↗' : 'View Repository ↗';
+            button.setAttribute('aria-label', `${match.homepage ? 'Open live project' : 'Open source repository'} for ${title}`);
+          } else {
+            const query = encodeURIComponent(`${title} user:Vadhana2437`);
+            button.href = `https://github.com/search?q=${query}&type=repositories`;
+            button.textContent = 'Find Project ↗';
+            button.setAttribute('aria-label', `Search GitHub for ${title}`);
+          }
+        });
+      })
+      .catch(() => {
+        // Keep a useful, project-specific GitHub search link if API access is unavailable.
+        projectCards.forEach((card, index) => {
+          const button = card.querySelector('.project-action');
+          const title = (projectTerms[index] || ['', []])[0];
+          if (!button) return;
+          button.href = `https://github.com/search?q=${encodeURIComponent(title + ' user:Vadhana2437')}&type=repositories`;
+          button.textContent = 'Find Project ↗';
+        });
+      });
+
+    */
+
+    // Exactly seven requested colours; change once every second.
+    const palette = [
+      ['#bceeff','skyblue'],
+      ['#b7f7bc','green'],
+      ['#9bf2e8','turquoise'],
+      ['#ffc0df','pink'],
+      ['#dfcaff','lavender'],
+      ['#ffd19b','orange'],
+      ['#10131f','black']
+    ];
+    let paletteIndex = 0;
+    function setPalette() {
+      const [color, label] = palette[paletteIndex];
+      document.body.style.setProperty('background-color', color, 'important');
+      document.body.dataset.theme = label;
+      paletteIndex = (paletteIndex + 1) % palette.length;
+    }
+    setPalette();
+    setInterval(setPalette, 1000);
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
